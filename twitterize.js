@@ -6,21 +6,23 @@ if (typeof Object.create !== 'function') {	//if the browser doesn't support 'Obj
 		return new F();	// launch a new instatnce of this function, after it had inheritted methods from the 'Twitter' object I define. This instance is then stored in the 'twitter' object.
 	};
 }
+
 (function($, window, document, undefined) {	// passing a slef executing function to make sure my plugin doesn't clash with any other script that might be using the $ to refer to something else. Also, adding common parameters like window & document & undefined.
 	var Twitter = {
 		init: function(options, elem) {	// an 'init' method, to  get the plugin started.
-			var self = this;
+			var self = this;	// Since 'this' is a moving target, I'm setting it into the variable 'self', so I can still use it later if I need to.
 
 			self.elem = elem;
-			self.$elem = $(elem);
+			self.$elem = $(elem);	// Since I had set elem to the local scope variable self('this').elem, I am setting it here to $(elem), just so I can still use the jQuery method 'this' if I need to.
 
 			self.url = 'http://search.twitter.com/search.json';
 
-			if (typeof options === 'string') { //if the user had passed a string to search for.
+			if (typeof options === 'string') { //if the user had passed a String to search for.
 				self.search = options;
-			} else { // the user had passed an object.
+			} else { 					// if the user had passed an Object.
 				self.search = options.search;
 				self.options = $.extend( {}, $.fn.queryTwitter.options, options );
+				// console.log(self.options);
 			}
 
 			self.cycle();	// this will be the method that calls everything and displays it. 
@@ -37,8 +39,8 @@ if (typeof Object.create !== 'function') {	//if the browser doesn't support 'Obj
 		fetch: function() {	// this will be the method that retrieves the relevant tweets from Twitter.
 			return $.ajax({
 				url: this.url,
-				data: {q: this.search},
-				datatype: 'jsonp'
+				data: { q: this.search },
+				dataType: 'jsonp'
 			});
 		},
 
@@ -66,3 +68,6 @@ if (typeof Object.create !== 'function') {	//if the browser doesn't support 'Obj
 	};
 
 })(jQuery, window, document);	// passing the parameters from the top, so it creates a "local scope" for them, as a precaution. Also, not passing anything to the 'undefined' parameter, so that it always stays equal to 'undefined' (undefined=undefined).
+
+
+
