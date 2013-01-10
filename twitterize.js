@@ -25,7 +25,7 @@ if (typeof Object.create !== 'function') {	//if the browser doesn't support 'Obj
 				// console.log(self.options);
 			}
 
-			self.cycle();	// this will be the method that calls everything and displays it. 
+			self.cycle();	// this will be the method that calls/triggers all the functions below. 
 		},
 		cycle: function() {
 			var self = this;
@@ -45,15 +45,16 @@ if (typeof Object.create !== 'function') {	//if the browser doesn't support 'Obj
 		},
 
 		buildFragment: function(results) {
-			var self = this;
+			var self = this;	// Caching the 'this' element into the 'self' variable, again, for a comfortable local scope.
 
-			self.tweets = $.map(results.results, function(obj, i) {
-				console.log(obj);
+			self.tweets = $.map(results.results, function(obj, i) {	// setting the 'tweets' object to the query's results. Filtering the results array using the 'map' method, to get access to the object(obj) and then to the Index(i).
+				return $(self.options.wrapEachWith).append(obj.text)[0];
 			});
+			console.log(self.tweets);
 		},
 
-		display: function() {	// this will be the method that displays the tweets that were retrieved onto the screen. 
-			this.$elem.html(self.tweets);	//is that available?? I am referencing the search term which I cached earlier into $elem.
+		display: function() {	// This will be the method that displays the tweets that were retrieved onto the screen. 
+			this.$elem.html(self.tweets);	// I am referencing the search term which I cached earlier (into $elem) and using the jQuery method 'html' to display some tweets.
 		}
 	};
 	$.fn.queryTwitter = function(options) {
@@ -64,7 +65,8 @@ if (typeof Object.create !== 'function') {	//if the browser doesn't support 'Obj
 	};
 
 	$.fn.queryTwitter.options = { // Defining the OPTIONS for the plugin. The user may access the 'options' object, and change them as per his/her defaults.
-		search: 'preendotme'
+		search: 'preendotme',		// Setting a default search term, in case the user doesn't insert one.
+		wrapEachWith: '<li></li>'	// wrapping each element in the returned array inside a <li>.
 	};
 
 })(jQuery, window, document);	// passing the parameters from the top, so it creates a "local scope" for them, as a precaution. Also, not passing anything to the 'undefined' parameter, so that it always stays equal to 'undefined' (undefined=undefined).

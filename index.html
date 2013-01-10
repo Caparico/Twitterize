@@ -6,13 +6,13 @@
 </head>
 <body>
     <h1>The Tweets</h1>
-    <div class="tweets"></div>
+    <ul class="tweets"></ul>
     
     <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.8.3/jquery.min.js"></script>
     <script src="twitterize.js"></script>
 
     <script>
-        $('div.tweets').queryTwitter({
+        $('ul.tweets').queryTwitter({
             search: 'Israel'
         });
     </script>
