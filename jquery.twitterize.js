@@ -1,9 +1,9 @@
 //A polyfill for older browsers that don't support the 'Object.create' function.
-if (typeof Object.create !== 'function') {	//if the browser doesn't support 'Object.create' it will NOT recognize it as a function
+if (typeof Object.create !== 'function') {	//if the browser doesn't support 'Object.create' it will NOT recognize it as a function.
 	Object.create = function(obj) {	// make the browser accept the object
 		function F() {};	// a constructor function
-		F.prototype = obj;	//setting the function's prototype = Twitter object, right below.
-		return new F();	// launch a new instatnce of this function, after it had inheritted methods from the 'Twitter' object I define. This instance is then stored in the 'twitter' object.
+		F.prototype = obj;	//setting the function's prototype = twitter object, on line 64. This will enable the inheritance of it's qualities.
+		return new F();	// launch a new instatnce of this function, after it had inheritted methods from the 'twitter' object I define. This instance is then stored in the 'twitter' object.
 	};
 }
 
