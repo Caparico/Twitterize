@@ -21,7 +21,7 @@ if (typeof Object.create !== 'function') {	//if the browser doesn't support 'Obj
 				self.search = options;
 			} else { 					// if the user had passed an Object.
 				self.search = options.search;
-				self.options = $.extend( {}, $.fn.queryTwitter.options, options );
+				self.options = $.extend( {}, $.fn.Twitterize.options, options );
 				// console.log(self.options);
 			}
 
@@ -57,14 +57,14 @@ if (typeof Object.create !== 'function') {	//if the browser doesn't support 'Obj
 			this.$elem.html(self.tweets);	// I am referencing the search term which I cached earlier (into $elem) and using the jQuery method 'html' to display some tweets.
 		}
 	};
-	$.fn.queryTwitter = function(options) {
+	$.fn.Twitterize = function(options) {
 		return this.each(function() {	// inside this scope, 'this' is refering to the jquery object, not to a DOM node, so no need to wrap it in the $(this) jqeury object again, because it will create the following: $($(this)), which is redundent.
 			var twitter = Object.create(Twitter);	//creating an instance of the object by using the 'create' method on Object. It will create a new function and assign it with all of the Twitter object's methods from above, and then, return it.
 			twitter.init(options, this); 
 		});
 	};
 
-	$.fn.queryTwitter.options = { // Defining the OPTIONS for the plugin. The user may access the 'options' object, and change them as per his/her defaults.
+	$.fn.Twitterize.options = { // Defining the OPTIONS for the plugin. The user may access the 'options' object, and change them as per his/her defaults.
 		search: 'preendotme',		// Setting a default search term, in case the user doesn't insert one.
 		wrapEachWith: '<li></li>'	// wrapping each element in the returned array inside a <li>.
 	};
