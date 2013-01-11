@@ -19,13 +19,13 @@ if (typeof Object.create !== 'function') {	//if the browser doesn't support 'Obj
 
 			self.url = 'http://search.twitter.com/search.json';
 
-			if (typeof options === 'string') { //if the user had passed a String to search for.
+			if (typeof options === 'string') { //if the user had passed a string to search for - I use it.
 				self.search = options;
-			} else { 					// if the user had passed an Object.
+			} else { 					// if the user had passed an object - I store it to override the default search.
 				self.search = options.search;
-				self.options = $.extend( {}, $.fn.Twitterize.options, options );	//making sure that the user can pass a search term that will override the default search('preendotme'). 'options' will be equal to the search term inserted by the user, on index.html.
-				// console.log(self.options);
 			}
+
+			self.options = $.extend( {}, $.fn.Twitterize.options, options );	//making sure that the user can pass a search term that will override the default search('preendotme'). 'options' will be equal to the search term inserted by the user, on index.html.
 
 			self.cycle();	 
 		},
@@ -33,12 +33,13 @@ if (typeof Object.create !== 'function') {	//if the browser doesn't support 'Obj
 			var self = this;
 
 			self.fetch().done(function(results) {	// once the 'fetch' method is done fetching relevant tweets - they will be available as 'results'.
+				console.log(results);
 				self.buildFragment(results);		// the buildFragment method will filter through them.
 				self.display();						// the display method will simply display them.
 			});
 		},
 
-		fetch: function() {	// this is the method that retrieves the relevant tweets from Twitter.
+		fetch: function() {		// this is the method that retrieves the relevant tweets from Twitter.
 			return $.ajax({
 				url: this.url,
 				data: { q: this.search },
@@ -52,11 +53,13 @@ if (typeof Object.create !== 'function') {	//if the browser doesn't support 'Obj
 			self.tweets = $.map(results.results, function(obj, i) {	// setting the 'tweets' object to the query's results. I am mapping through 'results.results' because when the tweets are retrieved they come as an array of tweets wrapped inside an OBJECT. Filtering the results array using the 'map' method, to get access to the object(obj) and then to the Index(i).
 				return $(self.options.wrapEachWith).append(obj.text)[0];	// (obj.text)[0] is picking only the specific 'text' node from the array within the object that is returned. Each one is then wrapped inside an <li> tag - as per the default settings of the plug-in.
 			});
-			console.log(self.tweets);
+		
 		},
 
 		display: function() {	// This will be the method that displays the tweets that were filtered - onto the screen. 
-			this.$elem.html(this.tweets);	// I am referencing the search term which I cached earlier (into $elem) and using the jQuery method 'html' to display some tweets from Twitter api.
+			var self = this;
+
+			self.$elem.html(self.tweets);	// I am referencing the search term which I cached earlier (into $elem) and using the jQuery method 'html' to display some tweets from Twitter api.
 		}
 	};
 	$.fn.Twitterize = function(options) {
