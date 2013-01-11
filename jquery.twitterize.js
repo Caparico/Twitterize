@@ -1,5 +1,5 @@
 //A polyfill for older browsers that don't support the 'Object.create' function.
-if (typeof Object.create !== 'function') {	//if the browser doesn't support 'Object.create' it will not recognize it as a function
+if (typeof Object.create !== 'function') {	//if the browser doesn't support 'Object.create' it will NOT recognize it as a function
 	Object.create = function(obj) {	// make the browser accept the object
 		function F() {};	// a constructor function
 		F.prototype = obj;	//setting the function's prototype = Twitter object, right below.
@@ -7,10 +7,12 @@ if (typeof Object.create !== 'function') {	//if the browser doesn't support 'Obj
 	};
 }
 
-(function($, window, document, undefined) {	// passing an Immediately Invoked Function Expression to make sure my plugin doesn't clash with any other script that might be using the $ to refer to something else. Also, adding common parameters like window & document & undefined.
+// Here starts the actual pplug-in:
+
+(function($, window, document, undefined) {	// passing a self-executing anonymous function to make sure my plugin doesn't clash with any other script that might be using the $ to refer to something else. Also, adding common parameters like window & document & undefined.
 	var Twitter = {
-		init: function(options, elem) {	// an 'init' method, to  get the plugin started.
-			var self = this;	// Since 'this' is a moving target, I'm setting it into the variable 'self', so I can still use it later if I need to.
+		init: function(options, elem) {	// an 'init' method to initiate the plugin.
+			var self = this;	// Since 'this' is a moving target, I'm caching it into the 'self' variable for a comfortable local scope.
 
 			self.elem = elem;
 			self.$elem = $(elem);	// Since I had set elem to the local scope variable self('this').elem, I am setting it here to $(elem), just so I can still use the jQuery method 'this' if I need to.
@@ -45,7 +47,7 @@ if (typeof Object.create !== 'function') {	//if the browser doesn't support 'Obj
 		},
 
 		buildFragment: function(results) {
-			var self = this;	// Caching the 'this' element into the 'self' variable, again, for a comfortable local scope.
+			var self = this;	// 
 
 			self.tweets = $.map(results.results, function(obj, i) {	// setting the 'tweets' object to the query's results. Filtering the results array using the 'map' method, to get access to the object(obj) and then to the Index(i).
 				return $(self.options.wrapEachWith).append(obj.text)[0];
