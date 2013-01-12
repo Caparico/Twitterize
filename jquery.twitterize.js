@@ -58,10 +58,11 @@ if (typeof Object.create !== 'function') {	//if the browser doesn't support 'Obj
 
 		display: function() {	// This will be the method that displays the tweets that were filtered - onto the screen. 
 			var self = this;
-
-			self.$elem.html(self.tweets);	// I am referencing the search term which I cached earlier (into $elem) and using the jQuery method 'html' to display some tweets from Twitter api.
+	          
+   			self.$elem.html(self.tweets);	// I am referencing the search term which I cached earlier (into $elem) and using the jQuery method 'html' to display some tweets from Twitter api.
 		}
 	};
+	
 	$.fn.Twitterize = function(options) {
 		return this.each(function() {	// inside this scope, 'this' is refering to the jquery object, not to a DOM node, so no need to wrap it in the $(this) jqeury object again, because it will create the following: $($(this)), which is redundent. Returning 'this' allows for a continuation of the cainability. Once it's returned, the object can be manipulated again.
 			var twitter = Object.create(Twitter);	//creating an instance of the object by using the 'create' method on Object. It will create a new function and assign it with all of the Twitter object's methods from above, and then, return it.
