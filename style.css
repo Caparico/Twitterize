@@ -1,7 +1,239 @@
 body {
-	background-color: #ccc;
+	background-color: #000;
 }
 
-ul>li {
-	color: brown;
+h1 {
+	color: lime;
+}
+
+li {
+	color: lime;
+	font-family: "Courier";
+	font-size: 16px;
+	margin: 10px 0 0 10px;
+	white-space: nowrap;
+	overflow: hidden;
+	width: 100%;
+
+	-webkit-animation: type 4s steps(60, end);
+	-moz-animation: type 4s steps(60, end);
+	-ms-animation: type 4s steps(60, end);
+	-o-animation: type 4s steps(60, end);
+	animation: type 4s steps(60, end);
+}
+
+li:nth-child(2) {
+	-webkit-animation: type2 8s steps(60, end);
+	-moz-animation: type2 8s steps(60, end);
+	-ms-animation: type2 8s steps(60, end);
+	-o-animation: type2 8s steps(60, end);
+	animation: type2 8s steps(60, end);
+}
+
+li:nth-child(3) {
+	-webkit-animation: type 10s steps(60, end);
+	-moz-animation: type 10s steps(60, end);
+	-ms-animation: type 10s steps(60, end);
+	-o-animation: type 10s steps(60, end);
+	animation: type 10s steps(60, end);
+}
+
+li:nth-child(4) {
+	-webkit-animation: type2 5s steps(60, end);
+	-moz-animation: type2 5s steps(60, end);
+	-ms-animation: type2 5s steps(60, end);
+	-o-animation: type2 5s steps(60, end);
+	animation: type2 5s steps(60, end);
+}
+
+li:nth-child(5) {
+	-webkit-animation: type 3s steps(60, end);
+	-moz-animation: type 3s steps(60, end);
+	-ms-animation: type 3s steps(60, end);
+	-o-animation: type 3s steps(60, end);
+	animation: type 3s steps(60, end);
+}
+
+li:nth-child(6) {
+	-webkit-animation: type2 7s steps(60, end);
+	-moz-animation: type2 7s steps(60, end);
+	-ms-animation: type2 7s steps(60, end);
+	-o-animation: type2 7s steps(60, end);
+	animation: type2 7s steps(60, end);
+}
+
+li:nth-child(7) {
+	-webkit-animation: type 10s steps(60, end);
+	-moz-animation: type 10s steps(60, end);
+	-ms-animation: type 10s steps(60, end);
+	-o-animation: type 10s steps(60, end);
+	animation: type 10s steps(60, end);
+}
+
+li:nth-child(8) {
+	-webkit-animation: type2 2s steps(60, end);
+	-moz-animation: type2 2s steps(60, end);
+	-ms-animation: type2 2s steps(60, end);
+	-o-animation: type2 2s steps(60, end);
+	animation: type2 2s steps(60, end);
+}
+
+li:nth-child(9) {
+	-webkit-animation: type 7s steps(60, end);
+	-moz-animation: type 7s steps(60, end);
+	-ms-animation: type 7s steps(60, end);
+	-o-animation: type 7s steps(60, end);
+	animation: type 7s steps(60, end);
+}
+
+li:nth-child(10) {
+	-webkit-animation: type2 3s steps(60, end);
+	-moz-animation: type2 3s steps(60, end);
+	-ms-animation: type2 3s steps(60, end);
+	-o-animation: type2 3s steps(60, end);
+	animation: type2 3s steps(60, end);
+}
+
+li:nth-child(11) {
+	-webkit-animation: type 5s steps(60, end);
+	-moz-animation: type 5s steps(60, end);
+	-ms-animation: type 5s steps(60, end);
+	-o-animation: type 5s steps(60, end);
+	animation: type 5s steps(60, end);
+}
+
+li:nth-child(12) {
+	-webkit-animation: type2 11s steps(60, end);
+	-moz-animation: type2 11s steps(60, end);
+	-ms-animation: type2 11s steps(60, end);
+	-o-animation: type2 11s steps(60, end);
+	animation: type2 11s steps(60, end);
+}
+
+li:nth-child(13) {
+	-webkit-animation: type 2s steps(60, end);
+	-moz-animation: type 2s steps(60, end);
+	-ms-animation: type 2s steps(60, end);
+	-o-animation: type 2s steps(60, end);
+	animation: type 2s steps(60, end);
+}
+
+li:nth-child(14) {
+	-webkit-animation: type 6s steps(60, end);
+	-moz-animation: type 6s steps(60, end);
+	-ms-animation: type 6s steps(60, end);
+	-o-animation: type 6s steps(60, end);
+	animation: type 6s steps(60, end);
+}
+
+li:nth-child(15) {
+	-webkit-animation: type 9s steps(60, end);
+	-moz-animation: type 9s steps(60, end);
+	-ms-animation: type 9s steps(60, end);
+	-o-animation: type 9s steps(60, end);
+	animation: type 9s steps(60, end);
+}
+
+@keyframes "type" {
+ from {
+    width: 0;
+ }
+
+}
+
+@-moz-keyframes type {
+ from {
+   width: 0;
+ }
+
+}
+
+@-webkit-keyframes "type" {
+ from {
+   width: 0;
+ }
+
+}
+
+@-ms-keyframes "type" {
+ from {
+   width: 0;
+ }
+
+}
+
+@-o-keyframes "type" {
+ from {
+   width: 0;
+ }
+
+}
+
+@keyframes "type2" {
+ 0% {
+    width: 0;
+ }
+ 50% {
+    width: 0;
+ }
+ 100% {
+    width: 100;
+ }
+
+}
+
+@-moz-keyframes type2 {
+ 0% {
+   width: 0;
+ }
+ 50% {
+   width: 0;
+ }
+ 100% {
+   width: 100;
+ }
+
+}
+
+@-webkit-keyframes "type2" {
+ 0% {
+   width: 0;
+ }
+ 50% {
+   width: 0;
+ }
+ 100% {
+   width: 100;
+ }
+
+}
+
+@-ms-keyframes "type2" {
+ 0% {
+   width: 0;
+ }
+ 50% {
+   width: 0;
+ }
+ 100% {
+   width: 100;
+ }
+
+}
+
+@-o-keyframes "type2" {
+ 0% {
+   width: 0;
+ }
+ 50% {
+   width: 0;
+ }
+ 100% {
+   width: 100;
+ }
+
+}
+
+::selection {
+	background: pink;
 }

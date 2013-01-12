@@ -1,4 +1,5 @@
 //A polyfill for older browsers that don't support the 'Object.create' function.
+
 if (typeof Object.create !== 'function') {	//if the browser doesn't support 'Object.create' it will NOT recognize it as a function.
 	Object.create = function(obj) {	// make the browser accept the object
 		function F() {};	// a constructor function
@@ -33,7 +34,6 @@ if (typeof Object.create !== 'function') {	//if the browser doesn't support 'Obj
 			var self = this;
 
 			self.fetch().done(function(results) {	// once the 'fetch' method is done fetching relevant tweets - they will be available as 'results'.
-				console.log(results);
 				self.buildFragment(results);		// the buildFragment method will filter through them.
 				self.display();						// the display method will simply display them.
 			});
