@@ -71,7 +71,7 @@ if (typeof Object.create !== 'function') {	//if the browser doesn't support 'Obj
 	};
 
 	$.fn.Twitterize.options = { // Defining the OPTIONS for the plugin. The user may access the 'options' object, and change them as per his/her defaults.
-		search: 'preendotme',		// Setting a default search term, in case the user doesn't insert one.
+		search: 'Israel',		// Setting a default search term, in case the user doesn't insert one.
 		wrapEachWith: '<li></li>'	// as a default, wrapping each (text) element in the returned array inside an <li> tag.
 	};
 
